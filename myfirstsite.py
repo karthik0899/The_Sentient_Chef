@@ -1,13 +1,8 @@
 # import the streamlit library
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-import re
-import collections
-import time
 import warnings
-import qrcode
 import textwrap
 warnings.filterwarnings('ignore')
 from gensim.corpora import Dictionary
