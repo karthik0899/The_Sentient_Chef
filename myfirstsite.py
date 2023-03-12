@@ -8,7 +8,6 @@ warnings.filterwarnings('ignore')
 from gensim.corpora import Dictionary
 from gensim.models.lsimodel import LsiModel
 from gensim.similarities import MatrixSimilarity
-from recipes_recommendation import get_recipes_by_ingredients
 # give a title to our app
 df_diet = pd.read_csv("/home/karthikmrathod1999/my projects/data/Recommendation_data.csv")
 
