@@ -9,24 +9,24 @@ from gensim.corpora import Dictionary
 from gensim.models.lsimodel import LsiModel
 from gensim.similarities import MatrixSimilarity
 # give a title to our app
-df_diet = pd.read_csv("/home/karthikmrathod1999/my projects/data/Recommendation_data.csv")
+df_diet = pd.read_csv("Recommendation_data.csv")
 
 df_diet_non_veg = df_diet[df_diet['diet_type'] == 'nveg'].reset_index(drop = True).copy()
 df_diet_veg = df_diet[df_diet['diet_type'] == 'veg'].reset_index(drop = True).copy()
 df_diet_vegan = df_diet[df_diet['diet_type'] == 'vegan'].reset_index(drop = True).copy()
 
-model_0 = LsiModel.load('/home/karthikmrathod1999/my projects/data/models /model_0')
-index_0 = MatrixSimilarity.load('/home/karthikmrathod1999/my projects/data/models /index_0')
-ingredient_dict_0 = Dictionary.load('/home/karthikmrathod1999/my projects/data/models /ingredient_dict_0.dict')
-model_1 = LsiModel.load('/home/karthikmrathod1999/my projects/data/models /model_1')
-index_1 = MatrixSimilarity.load('/home/karthikmrathod1999/my projects/data/models /index_1')
-ingredient_dict_1 = Dictionary.load('/home/karthikmrathod1999/my projects/data/models /ingredient_dict_1.dict')
-model_2 = LsiModel.load('/home/karthikmrathod1999/my projects/data/models /model_2')
-index_2 = MatrixSimilarity.load('/home/karthikmrathod1999/my projects/data/models /index_2')
-ingredient_dict_2 = Dictionary.load('/home/karthikmrathod1999/my projects/data/models /ingredient_dict_2.dict')
-model_3 = LsiModel.load('/home/karthikmrathod1999/my projects/data/models /model_3')
-index_3 = MatrixSimilarity.load('/home/karthikmrathod1999/my projects/data/models /index_3')
-ingredient_dict_3 = Dictionary.load('/home/karthikmrathod1999/my projects/data/models /ingredient_dict_3.dict')
+model_0 = LsiModel.load('models /model_0')
+index_0 = MatrixSimilarity.load('models /index_0')
+ingredient_dict_0 = Dictionary.load('models /ingredient_dict_0.dict')
+model_1 = LsiModel.load('models /model_1')
+index_1 = MatrixSimilarity.load('models /index_1')
+ingredient_dict_1 = Dictionary.load('models /ingredient_dict_1.dict')
+model_2 = LsiModel.load('models /model_2')
+index_2 = MatrixSimilarity.load('models /index_2')
+ingredient_dict_2 = Dictionary.load('models /ingredient_dict_2.dict')
+model_3 = LsiModel.load('models /model_3')
+index_3 = MatrixSimilarity.load('models /index_3')
+ingredient_dict_3 = Dictionary.load('models /ingredient_dict_3.dict')
 
 model_dict = {"suprise_me":0,"non-veg":1,"veg":2,"vegan":3}
 
