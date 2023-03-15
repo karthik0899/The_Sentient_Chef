@@ -8,13 +8,17 @@ warnings.filterwarnings('ignore')
 from gensim.corpora import Dictionary
 from gensim.models.lsimodel import LsiModel
 from gensim.similarities import MatrixSimilarity
-# give a title to our app
+
+# importing the requried dataset
 df_diet = pd.read_csv("Recommendation_data.csv")
 
+# This code creates three dataframes containing recipes for different diet types - non-vegetarian, vegetarian, and vegan
 df_diet_non_veg = df_diet[df_diet['diet_type'] == 'nveg'].reset_index(drop = True).copy()
 df_diet_veg = df_diet[df_diet['diet_type'] == 'veg'].reset_index(drop = True).copy()
 df_diet_vegan = df_diet[df_diet['diet_type'] == 'vegan'].reset_index(drop = True).copy()
 
+# This code loads pre-trained LSI models, similarity indices, and dictionaries for four different diet types (0: general, 1: non-vegetarian, 2: vegetarian, 3: vegan)
+# that were saved previously using the save() method.
 model_0 = LsiModel.load('models /model_0')
 index_0 = MatrixSimilarity.load('models /index_0')
 ingredient_dict_0 = Dictionary.load('models /ingredient_dict_0.dict')
@@ -28,10 +32,24 @@ model_3 = LsiModel.load('models /model_3')
 index_3 = MatrixSimilarity.load('models /index_3')
 ingredient_dict_3 = Dictionary.load('models /ingredient_dict_3.dict')
 
+# This dictionary will be used to select the appropriate model for recommendation
 model_dict = {"suprise_me":0,"non-veg":1,"veg":2,"vegan":3}
 
 # Define a function to get the top n similar recipes based on user ingredients
 def get_recipes_by_ingredients(ingredients, n,model):
+    """
+    Given a list of ingredients, return a dataframe of n recommended recipes based on the similarity 
+    of the ingredients to those in the dataset, for a specific diet type.
+
+    Args:
+    - ingredients (list): A list of ingredients.
+    - n (int): The number of recommended recipes to return.
+    - model (str): A string indicating the diet type to consider. 
+                   Possible values: 'suprise', 'non-veg', 'veg', 'vegan'.
+
+    Returns:
+    - recommends (DataFrame): A Pandas DataFrame containing the n recommended recipes.
+    """
     if model_dict.get(model) == 0:
         # Convert the user ingredients to bag-of-words representation
         ingredient_bow = ingredient_dict_0.doc2bow(ingredients)
@@ -109,27 +127,29 @@ def get_recipes_by_ingredients(ingredients, n,model):
         recommends = recommends.reset_index(drop = True)
         return recommends
 
-# Test the function with a list of user ingredients and get the top 3 similar recipes
+"""
+1.The code begins by importing Streamlit and defining the title of the web app as "The Sentient Chef".
 
+2.The user can input a list of ingredients separated by spaces and select a diet type from a dropdown menu.
 
+3.The function get_recipes_by_ingredients is called with the list of ingredients and the selected diet type, and it returns a DataFrame with 10 recipe suggestions.
 
+4.If the user clicks the "Submit" button, the code displays the title, description, and URL of each recipe suggestion in a separate container using Streamlit's container function.
 
+5.The title and description are displayed using Streamlit's header and text functions, respectively, and the URL is displayed as a hyperlink using Streamlit's markdown syntax.
 
-
+Overall, the code provides a simple interface for users to get recipe suggestions based on their ingredients and dietary preferences.
+"""
 
 st.title('The Sentient Chef')
 
-# TAKE WEIGHT INPUT in kgs
 weight = st.text_input("input ingerdients with spaces ")
 diet = st.selectbox("Diet Type: ",
                      ['suprise_me', 'non-veg', 'veg','vegan'])
-# # TAKE HEIGHT INPUT
-# # radio button to choose height format
-# status = st.radio('Select your height format: ',
-# 				('Non-Veg', 'Veg', 'Vegan', 'suprise me'))
+
 list_ = weight.split(" ")
 df = get_recipes_by_ingredients(list_, n=10,model =diet)
-# st.dataframe(df)
+
 if(st.button('Submit')):
     with st.container():
         st.header(df.title[0])
@@ -171,7 +191,7 @@ if(st.button('Submit')):
         st.header(df.title[9])
         st.text(textwrap.fill(df.description[9], width=80))
         st.write(f"We can teleport you to the webpage if you like this recipe [teleport me]({df.URL[9]})")
-# 
+
 
     
 
