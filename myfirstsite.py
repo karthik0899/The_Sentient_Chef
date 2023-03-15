@@ -127,19 +127,19 @@ def get_recipes_by_ingredients(ingredients, n,model):
         recommends = recommends.reset_index(drop = True)
         return recommends
 
-"""
-1.The code begins by importing Streamlit and defining the title of the web app as "The Sentient Chef".
+# """
+# 1.The code begins by importing Streamlit and defining the title of the web app as "The Sentient Chef".
 
-2.The user can input a list of ingredients separated by spaces and select a diet type from a dropdown menu.
+# 2.The user can input a list of ingredients separated by spaces and select a diet type from a dropdown menu.
 
-3.The function get_recipes_by_ingredients is called with the list of ingredients and the selected diet type, and it returns a DataFrame with 10 recipe suggestions.
+# 3.The function get_recipes_by_ingredients is called with the list of ingredients and the selected diet type, and it returns a DataFrame with 10 recipe suggestions.
 
-4.If the user clicks the "Submit" button, the code displays the title, description, and URL of each recipe suggestion in a separate container using Streamlit's container function.
+# 4.If the user clicks the "Submit" button, the code displays the title, description, and URL of each recipe suggestion in a separate container using Streamlit's container function.
 
-5.The title and description are displayed using Streamlit's header and text functions, respectively, and the URL is displayed as a hyperlink using Streamlit's markdown syntax.
+# 5.The title and description are displayed using Streamlit's header and text functions, respectively, and the URL is displayed as a hyperlink using Streamlit's markdown syntax.
 
-Overall, the code provides a simple interface for users to get recipe suggestions based on their ingredients and dietary preferences.
-"""
+# Overall, the code provides a simple interface for users to get recipe suggestions based on their ingredients and dietary preferences.
+# """
 
 st.title('The Sentient Chef')
 
