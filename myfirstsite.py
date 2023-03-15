@@ -142,6 +142,7 @@ def get_recipes_by_ingredients(ingredients, n,model):
 # """
 
 st.title('The Sentient Chef')
+st.subheader("By The team of sentient chef")
 
 weight = st.text_input("input ingerdients with spaces ")
 diet = st.selectbox("Diet Type: ",
