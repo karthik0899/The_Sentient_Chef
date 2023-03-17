@@ -7,7 +7,7 @@ The Exploratory Data Analysis (EDA) is performed using the Folium map to visuali
 ## Recipe Recommender Model
 The recipe recommender model is built using NLP and  cosine similarity algorithm. The model recommends similar recipes based on the ingredients used in a given recipe. The model is deployed using Streamlit to provide an interactive interface to the users.
 
-##Deployment
+## Deployment
 The model is deployed on Streamlit and can be accessed through the following link:https://karthik0899-the-sentient-chef-myfirstsite-vfoadq.streamlit.app/
 
 Author
