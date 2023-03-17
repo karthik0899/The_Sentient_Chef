@@ -10,7 +10,7 @@ The recipe recommender model is built using NLP and  cosine similarity algorithm
 ## Deployment
 The model is deployed on Streamlit and can be accessed through the following link:https://karthik0899-the-sentient-chef-myfirstsite-vfoadq.streamlit.app/
 
-Author
+## Author
 This project was created by Team Sentient Chef
 
 
